@@ -1,0 +1,42 @@
+<style>
+    .greeting{
+        text-align: center;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 300px;
+    }
+
+    .post{
+        padding: 5px;
+        margin-top: 20px;
+        border: 1px solid black;
+    }
+
+    .post-head{
+        margin-top: 0;
+    }
+
+    .make-post{
+        padding: 5px 300px;
+    }
+</style>
+
+<h1 class="greeting">Hello, {{.Name}}</h1>
+<div class="make-post">
+    <form action="/make-post" method="POST">
+        <input type="text" name="theme"/>
+        <textarea name="text"></textarea>
+        <button type="submit" value="newPost">Make a post</button>
+    </form>
+</div>
+<div class="container">
+    {{range .Posts}}
+        <div class="post">
+            <h3 class="post-head">{{.Theme}}</h3>
+            <p>{{.Text}}</p>
+        </div>
+    {{end}}
+</div>
